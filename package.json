@@ -1,0 +1,13 @@
+{
+  "name": "llmkit",
+  "version": "0.1.0",
+  "description": "Rust LLM response normalizer (WASM build for Node/JS)",
+  "license": "MIT",
+  "scripts": {
+    "build": "wasm-pack build --target bundler --release --features wasm",
+    "build:node": "wasm-pack build --target nodejs --release --features wasm",
+    "build:web": "wasm-pack build --target web --release --features wasm",
+    "test": "node -e \"import('./pkg/llmkit.js').then(m=>console.log(!!m))\""
+  },
+  "files": ["pkg"]
+}

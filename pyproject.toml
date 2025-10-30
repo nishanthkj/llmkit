@@ -1,0 +1,20 @@
+[build-system]
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "llmkit"
+version = "0.1.0"
+description = "Rust-powered LLM response normalizer"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "Your Name" }]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+[tool.maturin]
+module-name = "llmkit_py"
+features = ["python"]     # add "csv","serde_yaml","toml" if needed

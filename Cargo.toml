@@ -1,0 +1,49 @@
+[package]
+name = "llmkit"
+version = "0.1.0"
+edition = "2024"
+description = "LLM response normalizer and multi-format converter"
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "llmkit"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"] # cdylib for Python/WASM, rlib for Rust usage
+
+[[bin]]
+name = "llmkit"
+path = "src/main.rs"
+
+[features]
+default = []
+python = ["pyo3/extension-module"]
+wasm = ["wasm-bindgen"]
+csv = ["dep:csv"]
+serde_yaml = ["dep:serde_yaml"]
+toml = ["dep:toml"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+serde_json = "1"
+regex = "1"
+base64 = "0.22"
+
+# optional format parsers
+csv = { version = "1", optional = true }
+serde_yaml = { version = "0.9", optional = true }
+toml = { version = "0.8", optional = true }
+
+# Python
+pyo3 = { version = "0.22", optional = true }
+
+# WebAssembly
+wasm-bindgen = { version = "0.2", optional = true }
+js-sys = { version = "0.3", optional = true }
+wasm-bindgen-futures = { version = "0.4", optional = true }
+
+[dev-dependencies]
+assert_cmd = "2"
+predicates = "3"
+serde_json = "1"
+tempfile = "3"
